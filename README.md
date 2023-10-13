@@ -207,6 +207,13 @@ When you run the `terraform apply` command, it will execute the changeset genera
 
 To automatically approve a `terraform apply`, you can make use of the `-auto-approve` flag eg. `terraform apply --auto-approve`
 
+
+#### Terraform Destroy
+
+The `terraform destroy` command is used to tear down and destroy the infrastructure resources managed by Terraform. It's essentially the opposite of terraform apply, which creates or updates resources based on your Terraform configuration.
+
+Again to automatically approve a `terraform destroy`, you can make use of the `-auto-approve` flag eg. `terraform destroy --auto-approve`
+
 ### Terraform Lock Files
 
 `.terraform.lock.hcl` is a file that locks the version of providers or modules used in a project.
