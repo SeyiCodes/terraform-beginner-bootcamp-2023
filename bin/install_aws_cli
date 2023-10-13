@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+cd /workspace
+
+PROGRAM='aws'
+
+# Check if the AWS CLI is installed.
+if ! command -v "${PROGRAM}" &> /dev/null; then
+
+  # Remove previous files
+  rm -rf './aws'
+  rm -f './awscliv2.zip'
+  # Download and install the AWS CLI.
+  curl -sL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  unzip awscliv2.zip
+  sudo ./aws/install
+
+  else
+  # The AWS CLI is already installed.
+  echo "this is cool"
+fi
+
+
+# Change the current directory to the project root directory.
+cd $PROJECT_ROOT
