@@ -239,3 +239,36 @@ If you lose this file, you lose knowning the state of your infrastructure.
 The `.terraform` directory is an important directory in a Terraform project, as it typically contains the downloaded binaries of Terraform providers. These providers are used by Terraform to interact with various infrastructure platforms and services. When you run `terraform init`, Terraform downloads the providers specified in your configuration files and places them in the `.terraform` directory. 
 
 It's **important to note** that the `.terraform` directory should not be manually edited or modified, as doing so could cause issues with your Terraform project. If you need to modify a provider, you should update the provider configuration in your Terraform files and then run `terraform init` again to update the provider binaries in the `.terraform` directory.
+
+
+#### Issues with Terraform Cloud Login and Gitpod Workspace
+
+When attempting to run `terraform login` it will launch a wiswig view to generate a token. However this fails to work on the Gitpod Vscode CLI in the browser.
+
+We can workaround the issue by manually generating  a token in the  [**Terraform Cloud Tokens Page**](https://app.terraform.io/app/settings/tokens?source=terraform-login)
+
+
+We create the file manually here:
+
+```sh
+touch /home/gitpod/.terraform.d/credentials.tfrc.json
+```
+
+Open it 
+
+```sh
+open /home/gitpod/.terraform.d/credentials.tfrc.json
+```
+
+
+Then provide the following code (replace your token in the file)
+
+```json
+{
+    "credentials": {
+      "app.terraform.io": {
+        "token": "YOUR-TERRAFORM-CLOUD-TOKEN"
+      }
+    }
+} 
+```   
